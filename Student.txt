@@ -1,5 +1,0 @@
-1|Ahmed Amin|3.3|fayoum|
-2|Mohamed Ali|2.2|fayoum|
-3|khaled hamed|4|cairo|
-4|Waleed Gamal|3.6|fayoum|
-5|Fahd Faris|2.5|Libnan|

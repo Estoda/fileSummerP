@@ -31,14 +31,14 @@ void StudentL::pack()
 		id[i] = strid[i];
 	}
 
-	strcat_s(buffer, id);
+	strcpy_s(buffer, id);
 	strcat_s(buffer, "|");
 	strcat_s(buffer, Name);
 	strcat_s(buffer, "|");
 	strcat_s(buffer, GPA);
 	strcat_s(buffer, "|");
 	strcat_s(buffer, Address);
-	strcat_s(buffer, "|");
+	strcat_s(buffer, "#");
 }
 // writing it in the file:
 void StudentL::write()const
@@ -70,7 +70,7 @@ void StudentL::create_tow_list()
 		char* ptr = buffer;
 		while (*ptr != '|')
 			ptr++;
-		*ptr = 0;
+		*ptr = '\0';
 
 		strcpy_s(id_list[++count], buffer);
 		rec_index_list[count] = index;
@@ -86,7 +86,7 @@ void StudentL::sort()
 	char temp[30];
 	for (int x = 0; x <= count; x++)
 		for (int y = x + 1; y <= count; y++)
-			if (atoi(id_list[x]) < atoi(id_list[y]))
+			if (atoi(id_list[x]) > atoi(id_list[y]))
 			{
 				strcpy_s(temp, id_list[x]);
 				strcpy_s(id_list[x], id_list[y]);
@@ -185,7 +185,7 @@ void StudentL::display()
 {
 	fstream file;
 	file.open("Student.txt", ios::in);
-	for (int x = 0; x < 5; x++)
+	for (int x = 0; x < count + 1; x++)
 	{
 		int rec_index = rec_index_list[x];
 		file.seekp(rec_index, ios::beg);
@@ -193,11 +193,4 @@ void StudentL::display()
 		cout << buffer << endl;
 	}
 	file.close();
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < 80; j++)
-			cout << id_list[i][j];
-		cout << endl;
-	}
-
 }
